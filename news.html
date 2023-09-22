@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crop Care ~ Home Page</title>
+    <link
+      rel="icon"
+      href="https://cdn.inc42.com/wp-content/uploads/2022/06/farmers-feature-760x570.png"
+      type="image/png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="auth.js"></script>
+  
+    <script src="https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js"></script>
+
+    <style>
+      body {
+    background-image: url('./bg2.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Optional: Scale the image to cover the entire element */
+}
+
+      /* Custom CSS for sticky bottom navbar */
+      .sticky-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030; /* Ensure it's above other content */
+      }
+      /* Smooth fading transition */
+      .carousel-inner .carousel-item {
+        transition: opacity 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+
+    
+    <!--NavBar-->
+
+    <nav
+      class="navbar fixed-top"
+      style="background-color: rgb(109, 247, 139)"
+      draggable="false"
+    >
+      <div class="container-fluid text-center">
+        <a class="navbar-brand p-0 m-0" href="#">
+          <img
+            src="../1695216639085.jpg"
+            alt="Bootstrap"
+            width="50"
+            height="50"
+          />
+        </a>
+        <p class="h2">Rakshak</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-chat-left-dots"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+          />
+          <path
+            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+          />
+        </svg>
+      </div>
+    </nav>
+
+    <!--Tabs-->
+
+    <div class="tabs" style="margin-top: 16%">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link px-0 active"
+            id="home-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#News-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="home-tab-pane"
+            aria-selected="true"
+          >
+            News
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link px-0"
+            id="profile-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#Updates-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="profile-tab-pane"
+            aria-selected="false"
+          >
+            Updates
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link px-0"
+            id="contact-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#Subsidies-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="contact-tab-pane"
+            aria-selected="false"
+          >
+            Subsidies
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link px-0"
+            id="contact-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#Diseases-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="contact-tab-pane"
+            aria-selected="false"
+          >
+            Diseases
+          </button>
+        </li>
+      </ul>
+
+      <!--Latest News Feed Section-->
+
+      <div class="tab-content" id="myTabContent">
+        <!--Subsidies Tab 01-->
+
+        <div
+          class="tab-pane fade show active"
+          id="News-tab-pane"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+          tabindex="0"
+        >
+          <div
+            id="carouselExampleSlidesOnly"
+            class="carousel slide carousel-fade border border-info border-5 rounded-3"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/Y2bJAj3NwSc"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/mMmIC32vdxQ"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/BnsyVc5z0zs"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="card-group mx-2 mt-2 border border-rounded-3">
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!--Subsidies Tab 02-->
+
+        <div
+          class="tab-pane fade"
+          id="Updates-tab-pane"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+          tabindex="0"
+        >
+          <div
+            id="carouselExampleSlidesOnly"
+            class="carousel slide carousel-fade border border-info border-5 rounded-3"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/-tdqorDOxgc"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/jin4W1HqgL4"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/fg5k00uT0TU"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="card-group mx-2 mt-2 border border-rounded-3">
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!--Subsidies Tab 03-->
+
+        <div
+          class="tab-pane fade"
+          id="Subsidies-tab-pane"
+          role="tabpanel"
+          aria-labelledby="contact-tab"
+          tabindex="0"
+        >
+          <div
+            id="carouselExampleSlidesOnly"
+            class="carousel slide carousel-fade border border-info border-5 rounded-3"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/b4eRRodrirQ"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/jPMD2GdgIck"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/eSoyrx3YIwk"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="card-group mx-2 mt-2 border border-rounded-3">
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-body-secondary">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!--Subsidies Tab 04-->
+
+        <div
+          class="tab-pane fade"
+          id="Diseases-tab-pane"
+          role="tabpanel"
+          aria-labelledby="contact-tab"
+          tabindex="0"
+        >
+          <div
+            id="carouselExampleSlidesOnly"
+            class="carousel slide carousel-fade border border-info border-5 rounded-3"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/1YsVVLbHUoA"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/TNZ4QA3iej4"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="5000">
+                <img
+                  src="https://source.unsplash.com/lV55D_U5l50"
+                  class="d-block w-100"
+                  style="height: 30vh"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-group mx-2 mt-2 border border-rounded-3">
+        <div class="card">
+          <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-body-secondary">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-body-secondary">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://i.ytimg.com/an_webp/eL1kmtPSFnQ/mqdefault_6s.webp?du=3000&sqp=CNiQt6gG&rs=AOn4CLBQP_msz41MhME1XZ7xA8XaNy0OPQ" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-body-secondary">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <!--Bottom Navbar-->
+
+    <nav
+      class="nav nav-justified nav-pills fixed-bottom text-center nav-justified border border-1 rounded-top-5 fw-bold text-primary-emphasis"
+      style="background-color: rgb(109, 247, 139)"
+    >
+      <button
+        class="nav-link px-0"
+        type="button"
+        role="tab"
+        aria-controls="home-tab-pane"
+        aria-selected="true"
+      >
+        <a class="nav-link" aria-current="page" href="./news.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-house-door"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"
+            /></svg><br />Home</a
+        >
+
+      </button>
+      <button
+        class="nav-link px-0"
+        type="button"
+        role="tab"
+        aria-controls="home-tab-pane"
+        aria-selected="true"
+      >
+        <a class="nav-link" href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            /></svg
+          ><br />Search</a
+        >
+      </button>
+      <input
+        style="display: none"
+        type="file"
+        class="fileinput"
+        id="file"
+        onchange="getFile(event)"
+        accept="image/png,image/jpeg"
+      /><button
+        class="nav-link px-0"
+        type="button"
+        role="tab"
+        aria-controls="home-tab-pane"
+        aria-selected="true"
+      >
+        <label for="file">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-camera"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
+            />
+            <path
+              d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
+            /></svg
+          ><br />Camera</label
+        >
+      </button>
+      <button
+        class="nav-link px-0"
+        type="button"
+        role="tab"
+        aria-controls="home-tab-pane"
+        aria-selected="true"
+      >
+        <a class="nav-link" href="#"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-clock-history"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"
+            />
+            <path
+              d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"
+            />
+            <path
+              d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"
+            /></svg
+          ><br />History</a
+        >
+      </button>
+      <button
+        class="nav-link px-0"
+        type="button"
+        role="tab"
+        aria-controls="home-tab-pane"
+        aria-selected="true"
+      >
+        <a class="nav-link" href="./profile.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-person"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"
+            /></svg
+          ><br />Profile</a
+        >
+      </button>
+    </nav>
+    
+    <!--LogIn Message-->
+
+    <div class="alert alert-info alert-dismissible fade show " role="alert" style="z-index: 10000; display:block; position:absolute;top:0;right:0;padding: 20px 50px;">
+      
+      Successfully Logged In !
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+  </body>
+
+  <!-- Necessary Scripts -->
+  <script>
+    const list = document.querySelectorAll(".nav_item");
+
+    function activeLink() {
+      list.forEach((item) => {
+        item.classList.remove("active");
+      });
+      this.classList.add("active");
+    }
+
+    list.forEach((item) => item.addEventListener("click", activeLink));
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-database.js"></script>
+  <script src="image.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
+</html>
